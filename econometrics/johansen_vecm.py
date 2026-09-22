@@ -1,6 +1,6 @@
 import numpy as np
 from statsmodels.tsa.vector_ar.vecm import coint_johansen
-
+from statsmodels.tsa.vector_ar.vecm import VECM
 
 def johansen_test(df, det_order=0, k_ar_diff=1):
     result = coint_johansen(
@@ -30,3 +30,17 @@ def get_cointegration_rank(result, significance=0.05):
 
     return rank
 
+
+def estimate_vecm(df, rank, k_ar_diff=1, deterministic="ci"):
+    model = VECM(
+        df,
+        k_ar_diff=k_ar_diff,
+        coint_rank=rank,
+        deterministic=deterministic
+    )
+
+    return model.fit()
+
+
+def get_pi(result):
+    return result.alpha @ result.beta.T

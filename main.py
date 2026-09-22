@@ -1,6 +1,5 @@
 from data.downloader import download_prices
-from econometrics.johansen import johansen_test, get_cointegration_rank
-from econometrics.vecm import estimate_vecm, get_pi
+from econometrics.johansen_vecm import johansen_test, get_cointegration_rank, estimate_vecm, get_pi
 
 #==========================================
 TICKERS = [
