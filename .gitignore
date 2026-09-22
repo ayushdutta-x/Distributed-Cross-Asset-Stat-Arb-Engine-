@@ -1,2 +1,4 @@
 venv/
 rough_docs/
+__pycache__/
+*.pyc
